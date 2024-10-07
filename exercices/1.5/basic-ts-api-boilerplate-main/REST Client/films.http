@@ -1,0 +1,27 @@
+######### NORMAL OPERATION  ###########
+
+### Read all films
+GET http://localhost:3000/films
+
+@baseUrl = http://localhost:3000
+
+### READ ALL FILTERED : Lire toutes les ressources de la collection selon le filtre donné
+GET {{baseUrl}}/films?minimum-duration=value
+
+### READ ONE : Lire la ressource identifiée
+GET {{baseUrl}}/films/{id}	
+
+### CREATE ONE : Créer une ressource basée sur les données de la requête
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    /*Bête exemple*/
+    "title":"Spider-Man",
+    "director":"Sam Raimi",
+    "duration":121,
+    "budget":139,
+    "description":"https://example.com/spiderman",
+    "imageUrl":"https://example.com/spiderman.jpg"
+
+}
