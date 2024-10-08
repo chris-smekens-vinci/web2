@@ -1,0 +1,48 @@
+######### NORMAL OPERATION  ###########
+
+### Read all films
+GET http://localhost:3000/films
+
+@baseUrl = http://localhost:3000
+
+### READ ALL FILTERED : Lire toutes les ressources de la collection selon le filtre donné
+GET {{baseUrl}}/films?minimum-duration=value
+
+### READ ONE : Lire la ressource identifiée
+GET {{baseUrl}}/films/{id}	
+
+### CREATE ONE : Créer une ressource basée sur les données de la requête
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    /*Bête exemple*/
+    "title":"Spider-Man",
+    "director":"Sam Raimi",
+    "duration":121,
+    "budget":139,
+    "description":"https://example.com/spiderman",
+    "imageUrl":"https://example.com/spiderman.jpg"
+
+}
+
+### DELETE ONE : Effacer la ressource identifiée
+DELETE {{baseUrl}}/films/{id}
+
+### UPDATE ONE : Mettre à jour les propriétés de la ressource par les valeurs données dans la requête, pour une ou plusieurs propriétés
+PATCH {{baseUrl}}/films/{id}
+Content-Type: application/json
+{
+    "title":"Blade"
+}
+
+### UPDATE ONE or CREATE ONE : Remplacer la ressource par une ressource reprenant les valeurs données dans la requête, seulement si toutes les propriétés non optionnelles de la ressource sont données ! Si la ressource n'existe pas, créer cette ressource seulement si l'id donné n'est pas déjà existant.
+PUT {{baseUrl}}/films/{id}
+Content-Type: application/json
+{
+    "title": "Blade",
+    "duration": 120,
+    "director": "Stephen Norrington",
+    "budget": 45,
+    "imageUrl": "https://en.wikipedia.org/wiki/Blade_(film)"
+}
