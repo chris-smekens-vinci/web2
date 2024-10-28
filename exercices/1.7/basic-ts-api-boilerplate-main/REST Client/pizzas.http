@@ -26,10 +26,10 @@ Content-Type: application/json
 }
 
 ### Delete pizza identified by 2
-DELETE {{baseUrl}}/pizzas/2
+DELETE {{baseUrl}}/pizzas/28
 
 ### Update the pizza identified by 6
-PATCH {{baseUrl}}/pizzas/6
+PATCH {{baseUrl}}/pizzas/5
 Content-Type: application/json
 
 {

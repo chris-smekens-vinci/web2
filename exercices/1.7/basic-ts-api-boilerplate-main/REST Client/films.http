@@ -9,40 +9,87 @@ GET http://localhost:3000/films
 GET {{baseUrl}}/films?minimum-duration=value
 
 ### READ ONE : Lire la ressource identifiée
-GET {{baseUrl}}/films/{id}	
+GET {{baseUrl}}/films/1	
 
 ### CREATE ONE : Créer une ressource basée sur les données de la requête
 POST {{baseUrl}}/films
 Content-Type: application/json
 
 {
-    /*Bête exemple*/
-    "title":"Spider-Man",
-    "director":"Sam Raimi",
-    "duration":121,
-    "budget":139,
-    "description":"https://example.com/spiderman",
-    "imageUrl":"https://example.com/spiderman.jpg"
-
+    "title": "Avengers: Endgame",
+    "director": "Anthony Russo, Joe Russo",
+    "duration": 181,
+    "budget": 356,
+    "description": "https://fr.wikipedia.org/wiki/Blade_(film,_1998)",
+    "imageUrl": "https://example.com/avengers-endgame.jpg"
 }
 
 ### DELETE ONE : Effacer la ressource identifiée
-DELETE {{baseUrl}}/films/{id}
+DELETE {{baseUrl}}/films/5
 
 ### UPDATE ONE : Mettre à jour les propriétés de la ressource par les valeurs données dans la requête, pour une ou plusieurs propriétés
-PATCH {{baseUrl}}/films/{id}
+PATCH {{baseUrl}}/films/5
 Content-Type: application/json
+
 {
     "title":"Blade"
 }
 
 ### UPDATE ONE or CREATE ONE : Remplacer la ressource par une ressource reprenant les valeurs données dans la requête, seulement si toutes les propriétés non optionnelles de la ressource sont données ! Si la ressource n'existe pas, créer cette ressource seulement si l'id donné n'est pas déjà existant.
-PUT {{baseUrl}}/films/{id}
+PUT {{baseUrl}}/films/5
 Content-Type: application/json
+
 {
     "title": "Blade",
     "duration": 120,
     "director": "Stephen Norrington",
     "budget": 45,
+    "description": "https://en.wikipedia.org/wiki/Blade_(film)",
     "imageUrl": "https://en.wikipedia.org/wiki/Blade_(film)"
+}
+
+
+
+######### ERROR OPERATION  ###########
+
+### Read pizza which does not exists
+GET {{baseUrl}}/films/100
+
+### Create a pizza which lacks a property
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title": "Avengers: Infinty War",
+    "director": "Anthony Russo, Joe Russo",
+    "duration": 181,
+    "budget": 356,
+    "description": "https://example.com/avengers-endgame",
+    "imageUrl": "https://example.com/avengers-endgame.jpg"
+}
+
+### Create a pizza without info for a property
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title":"",
+    "content":"Epinards, Brocolis, Olives vertes, Basilic"
+}
+
+### Update for a pizza which does not exist
+PATCH {{baseUrl}}/films/200
+Content-Type: application/json
+
+{
+    "title":"Batman : The Dark Knight Rises"
+}
+
+### Update for a pizza which does not provide any info for a property
+PATCH {{baseUrl}}/films/1
+Content-Type: application/json
+
+{
+    "title":"Batman : The Dark Knight Rises",
+    "content":""
 }
