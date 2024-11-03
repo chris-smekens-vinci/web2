@@ -1,3 +1,5 @@
+import "./Header.css";
+
 interface HeaderProps {
     urlLogo: string,
     children: React.ReactNode;
