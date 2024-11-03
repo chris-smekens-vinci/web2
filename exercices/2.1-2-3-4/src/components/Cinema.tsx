@@ -14,7 +14,7 @@ const Cinema = (props: CinemaProps) => (
         <ul>
             {props.movies.map((movie) => (
                 <li key={movie.title}>
-                    <strong>{movie.title}</strong> - Réalisateur :{movie.director}
+                    <strong>{movie.title}</strong> - Réalisateur : {movie.director}
                 </li>            
             ))}
         </ul>
