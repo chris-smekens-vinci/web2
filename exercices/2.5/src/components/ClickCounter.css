@@ -1,7 +1,3 @@
-.message10Clicks {
-  color: #FF69B4;
-}
-
 button {
     border-radius: 8px;
     border: 1px solid transparent;
@@ -33,3 +29,12 @@ button {
       background-color: #f9f9f9;
     }
   }
+
+.message10Clicks {
+  color: #FF69B4;
+}
+
+.mouseOnButton {
+  color: yellow; /* Initial color */
+  transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for color, scale, and shadow */
+}

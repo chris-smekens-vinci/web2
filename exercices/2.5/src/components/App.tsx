@@ -6,6 +6,7 @@ import ClickCounter from './ClickCounter'
 function App() {
   const title = "Click Counter";
   const message = "You are a master in the art of clicking !";
+  const textHoverOverTheCounter = "Please click on me now !";
 
   return (
     <>
@@ -21,6 +22,7 @@ function App() {
       <ClickCounter
         title={title}
         message10Clicks={message}
+        hoverOverTheCounter={textHoverOverTheCounter}
       />
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
