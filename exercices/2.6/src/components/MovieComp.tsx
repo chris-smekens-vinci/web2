@@ -1,5 +1,6 @@
 import { Movie } from "../types";
 import { useState } from "react";
+import './MovieComp.css';
 
 interface MovieCompProps {
   movie: Movie;
@@ -16,7 +17,7 @@ const MovieComp = (props: MovieCompProps) => {
         {showDescription && (
           <p>
             <h4>Description : </h4>
-            <p>{movie.description}</p>
+            <p className="description">{movie.description}</p>
           </p>
         )}
     </li> 
