@@ -1,5 +1,5 @@
-import Cinema from "../Cinema";
-import { Movie } from "../../types";
+import Cinema from "../components/Cinema";
+import { Movie } from "../types";
 
 const CinemaPage = () => {
   const pageTitle = "Information about movies in cinemas";

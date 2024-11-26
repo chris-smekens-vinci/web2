@@ -5,9 +5,10 @@ import ReactDOM from 'react-dom/client'
 import './index.css'
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from './components/App.tsx'
-import HomePage from './components/pages/HomePage.tsx';
-import CinemaPage from './components/pages/CinemaPage.tsx';
-import MovieListPage from './components/pages/MovieListPage.tsx';
+import HomePage from './pages/HomePage.tsx';
+import CinemaPage from './pages/CinemaPage.tsx';
+import MovieListPage from './pages/MovieListPage.tsx';
+import AddMoviePage from './pages/AddMoviePage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
         path: "/movie-list",
         element: <MovieListPage />,
       },
+      {
+        path: "/add-movie",
+        element: <AddMoviePage />,
+      }
     ],
   },
 ]);

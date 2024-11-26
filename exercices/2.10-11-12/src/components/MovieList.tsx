@@ -1,5 +1,5 @@
 import { Movie } from '../types';
-import '../css/MovieCard.css';
+import '../styles/MovieCard.css';
 
 interface MovieListProps {
     //name: string;

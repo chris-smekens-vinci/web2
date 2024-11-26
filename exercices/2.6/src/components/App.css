@@ -54,4 +54,15 @@
   align-items: center;
   }
 }
+
+@font-face {
+  font-family: 'Zuumee Rough Bold';
+  src: url('./assets/fontspring-demo-zuumerough-bold.otf') format('truetype');
+  font-weight: bold; /* Optionnel : selon le fichier */
+  font-style: normal; /* Ajustez selon les besoins */
+}
+
+.h1 {
+  font-family: 'Zuumee Rough Bold', sans-serif;
+}
   

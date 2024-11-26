@@ -1,6 +1,6 @@
 import { Movie } from "../types";
 import { SyntheticEvent, useState } from "react";
-import '../css/AddMovie.css';
+import '../styles/AddMovie.css';
 
 interface AddMovieProps {
     onAddMovie: (movies: Movie) => void;
