@@ -3,11 +3,12 @@ import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { Movie, MovieContext } from "../types";
+import { Movie, MovieContext, NewMovie } from "../types";
 import '../styles/App.css';
 
 const defaultMovies : Movie[] = [
   {
+    id: 1,
     title: "SPIDER-MAN",
     director: "Sam Raimi",
     duration : 121,
@@ -16,14 +17,25 @@ const defaultMovies : Movie[] = [
     budget: 139,
   },
   {
+    id: 2,
     title: "GLADIATOR",
     director: "Ridley Scott",
     duration : 155,
     urlImage: "https://m.media-amazon.com/images/I/71LPLHCs7HL.jpg",
-    description: "Le général romain Maximus est le plus fidèle soutien de l'empereur Marc Aurèle, qu'il a conduit de victoire en victoire avec une bravoure et un dévouement exemplaires. Jaloux du prestige de Maximus, et plus encore de l'amour que lui voue l'empereur, le fils de Marc Aurèle, Commode, s'arroge brutalement le pouvoir, puis ordonne l'arrestation du général et son exécution. Maximus échappe à ses assassins mais ne peut empêcher le massacre de sa famille. Capturé par un marchand d'esclaves, il devient gladiateur et prépare sa vengeance.",
+    description: "Le général romain Maximus, fidèle soutien de l'empereur Marc Aurèle, est trahi par le fils de ce dernier, Commode, qui s'empare du pouvoir et fait massacrer sa famille. Réduit en esclavage, Maximus devient gladiateur et prépare sa vengeance.",
     budget: 103,
   },
   {
+    id: 3,
+    title: "PULP FICTION",
+    director: "Quentin Tarantino",
+    duration : 154,
+    urlImage: "https://m.media-amazon.com/images/M/MV5BYTViYTE3ZGQtNDBlMC00ZTAyLTkyODMtZGRiZDg0MjA2YThkXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    description: "Ce film culte suit plusieurs histoires entrelacées de criminels, de gangsters et de boxeurs dans le Los Angeles des années 1990. Avec son mélange de dialogues percutants, de violence stylisée et de références pop, 'Pulp Fiction' est devenu un classique du cinéma indépendant et a marqué le style distinctif de Tarantino.",
+    budget: 8,
+  },
+  {
+    id: 4,
     title: "CASINO",
     director: "Martin Scorsese",
     duration : 178,
@@ -32,7 +44,44 @@ const defaultMovies : Movie[] = [
     budget: 52,
   },
   {
-    title: "MALCOM X",
+    id: 5,
+    title: "BLADE",
+    director: "Stephen Norrington",
+    duration : 120,
+    urlImage: "https://m.media-amazon.com/images/M/MV5BNzAzMmY3OWMtNDgyMS00Y2U4LTlmM2UtY2YwMmM0MDI5ODJmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    description: "Dans un monde où vampires et humains coexistent, Blade, un chasseur mi-humain mi-vampire, utilise ses pouvoirs pour protéger l'humanité. Armé de compétences surnaturelles et d'armes redoutables, il lutte contre une menace vampirique qui pourrait plonger le monde dans les ténèbres.",
+    budget: 45,
+  },
+  {
+    id: 6,
+    title: "THE HANGOVER PART II",
+    director: "Todd Phillips",
+    duration : 102,
+    urlImage: "https://m.media-amazon.com/images/M/MV5BMTM2MTM4MzY2OV5BMl5BanBnXkFtZTcwNjQ3NzI4NA@@._V1_FMjpg_UX1000_.jpg",
+    description: "Phil, Stu, Alan et Doug se rendent en Thaïlande pour le mariage de Stu. Après la soirée d'enterrement de vie de garçon, ils se réveillent dans une chambre d'hôtel à Bangkok, sans aucun souvenir de la nuit précédente. Ils doivent retrouver Teddy avant le mariage.",
+    budget: 80,
+  },
+  {
+    id: 7,
+    title: "THE GODFATHER",
+    director: "Francis Ford Coppola",
+    duration : 175,
+    urlImage: "https://m.media-amazon.com/images/M/MV5BYTJkNGQyZDgtZDQ0NC00MDM0LWEzZWQtYzUzZDEwMDljZWNjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg",
+    description: "Ce classique du cinéma suit la famille Corleone, une puissante dynastie mafieuse dirigée par le patriarche Vito Corleone. Alors que la famille lutte pour maintenir son pouvoir et son influence, le film explore des thèmes de loyauté, de trahison et de justice, offrant un regard sombre et captivant sur le crime organisé.",
+    budget: 6,
+  },
+  {
+    id: 8,
+    title: "HOME ALONE",
+    director: "Chris Columbus",
+    duration : 103,
+    urlImage: "https://m.media-amazon.com/images/M/MV5BMTUzMzg4MTg2M15BMl5BanBnXkFtZTYwNDM4OTk4._V1_.jpg",
+    description: "Lorsque Kevin McCallister est oublié par sa famille pour les vacances de Noël, il doit se débrouiller seul pour protéger sa maison des cambrioleurs. Avec des pièges ingénieux et un esprit vif, il défend son domicile contre les voleurs maladroits, apprenant des leçons sur la famille et la responsabilité.",
+    budget: 18,
+  },
+  {
+    id: 9,
+    title: "MALCOLM X",
     director: "Spike Lee",
     duration : 202,
     urlImage: "https://m.media-amazon.com/images/M/MV5BMTAzMjQ0NDMtY2I2Ny00M2FmLWEzNDQtNzgzYzIwZjhkZWRmXkEyXkFqcGc@._V1_.jpg",
@@ -40,13 +89,14 @@ const defaultMovies : Movie[] = [
     budget: 35,
   },
   {
+    id: 10,
     title: "THE PURSUIT OF HAPPYNESS",
     director: "Gabriele Muccino",
     duration : 117,
-    urlImage: "https://m.media-amazon.com/images/M/MV5BMTQ5NjQ0NDI3NF5BMl5BanBnXkFtZTcwNDI0MjEzMw@@._V1_.jpg",
+    urlImage: "https://www.criticsinc.com/photos/movieposters/p/pursuitofhappyness.jpg",
     description: "Basé sur une histoire vraie, le film suit Chris Gardner, un vendeur en difficulté qui, malgré l'adversité, se bat pour offrir une vie meilleure à son fils. En surmontant la pauvreté et les obstacles personnels, il poursuit son rêve de devenir courtier en bourse, illustrant la force de la détermination et de l'amour parental.",
     budget: 21,
-  },
+  }
 ];
 
 function App() {
@@ -56,9 +106,12 @@ function App() {
   const navigate = useNavigate();
 
   const [movies, setMovies] = useState(defaultMovies);
-  const movieAdded = (newMovie: Movie) => {
+
+  const movieAdded = (newMovie: NewMovie) => {
       console.log("the movie to add is:", newMovie);
-      setMovies([...movies, newMovie]); // ou bien -> setMovies(movies.concat(movie));
+      const nextId = Math.max(...movies.map((movie) => movie.id)) + 1;
+      const movieToBeAdded = { id: nextId, ...newMovie };
+      setMovies([...movies, movieToBeAdded]); 
       navigate("/movie-list");
   };
 
@@ -72,9 +125,11 @@ function App() {
       <Header title={title}>
         <NavBar />
       </Header>
+
       <main className="page-content">
         <Outlet context={movieContext}/>
       </main>
+
       <Footer text={footerText} />
     </div>
   )

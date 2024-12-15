@@ -1,11 +1,17 @@
 .movie-form {
-    max-width: 400px;
+    max-width: 800px; /* Augmenter la largeur du formulaire */
     margin: 0;
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: black;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+    /* Centrage vertical et horizontal avec plus d'espace en haut */
+    position: absolute;
+    top: 60%; /* Ajustement pour plus d'espace en haut */
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .movie-form h1 {

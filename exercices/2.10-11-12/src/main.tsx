@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage.tsx';
 import CinemaPage from './pages/CinemaPage.tsx';
 import MovieListPage from './pages/MovieListPage.tsx';
 import AddMoviePage from './pages/AddMoviePage.tsx';
+import MoviePage from './pages/MoviePage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/add-movie",
         element: <AddMoviePage />,
+      },
+      {
+        path: "/movie/:id",
+        element: <MoviePage />,
       }
     ],
   },
