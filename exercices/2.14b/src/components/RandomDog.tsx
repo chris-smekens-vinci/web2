@@ -15,6 +15,9 @@ const RandomDog: React.FC = () => {
 
   useEffect(() => {
     fetchDogImage();
+    const interval = setInterval(fetchDogImage, 5000);
+
+    return () => clearInterval(interval);
   }, []);
 
   return (

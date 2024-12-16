@@ -3,15 +3,10 @@ import RandomDog from './RandomDog';
 import '../styles/App.css';
 
 const App: React.FC = () => {
-  const [key, setKey] = useState<number>(0);
-
-  const refreshDogs = () => {
-    setKey(prevKey => prevKey + 1);
-  };
+  const [key] = useState<number>(0);
 
   return (
     <div className="container">
-      <button onClick={refreshDogs}>Refresh Dogs</button>
       <div className="dog-images">
         <RandomDog key={`${key}-1`} />
         <RandomDog key={`${key}-2`} />
