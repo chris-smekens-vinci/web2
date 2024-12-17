@@ -74,7 +74,7 @@
   background: #555;
 }
 
-.movie-card button {
+/*.movie-card button {
   background-color: #ff4d4d;
   color: white;
   border: none;
@@ -86,4 +86,17 @@
 
 .movie-card button:hover {
   background-color: #ff1a1a;
+}
+*/
+
+.trash-icon {
+  width: 20px;
+  height: 20px;
+  color: #fff;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.trash-icon:hover {
+  color: #ff1a1a;
 }

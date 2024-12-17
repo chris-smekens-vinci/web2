@@ -1,5 +1,6 @@
 import { Movie } from '../types';
 import '../styles/MovieCard.css';
+import { TrashIcon } from '@heroicons/react/20/solid';
 
 interface MovieCardProps {
     movie: Movie;
@@ -17,7 +18,7 @@ const MovieCard = (props: MovieCardProps) => {
                 <p>Durée : {movie.duration} minutes</p>
                 <p>{movie.description}</p>
                 <p>Budget : {movie.budget} millions</p>
-                <button onClick={() => onDelete(movie.id)}>Delete</button>
+                <TrashIcon className="trash-icon" onClick={() => onDelete(movie.id)} />
             </li>
         </div>
     );
