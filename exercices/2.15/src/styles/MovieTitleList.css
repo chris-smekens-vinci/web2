@@ -1,0 +1,55 @@
+/* Conteneur principal */
+.movie-title-list {
+    display: flex;
+    justify-content: flex-start; 
+    margin: 20px 0;
+    padding: 0 10px;
+}
+
+/* Liste des films */
+.movie-list-home {
+    list-style: none; /* Supprime les puces */
+    padding: 0;
+    margin: 0 auto; /* Centre la liste sur la page */
+    width: 100%;
+    max-width: 300px; /* Réduit la largeur pour des conteneurs plus compacts */
+    display: flex;
+    flex-direction: column; /* Dispose les items verticalement */
+    gap: 10px; /* Ajoute un espacement entre les items */
+}
+
+/* Chaque élément de la liste */
+.movie-list-item {
+    margin: 0; /* Supprime les marges individuelles */
+    padding: 10px; /* Ajoute un espace interne */
+    border-radius: 3px; /* Coins légèrement arrondis */
+    background-color: black; /* Couleur de fond sombre */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animations */
+    cursor: pointer; /* Indique que l'élément est cliquable */
+    border: 1px solid #fff; /* Ajoute un contour subtil */
+    width: 100%; /* Chaque item occupe toute la largeur */
+    box-sizing: border-box; /* Inclut les bordures et le padding dans la largeur */
+    text-align: center; /* Centre le texte horizontalement */
+}
+
+/* Liens à l'intérieur des items */
+.movie-link {
+    text-decoration: none !important; /* Supprime les soulignements */
+    color: #fff; /* Couleur du texte */
+    font-size: 1.1rem; /* Taille de police légèrement réduite */
+    font-weight: bold;
+    display: block; /* Permet un clic sur tout l'élément */
+    width: 100%;
+}
+
+/* Effets au survol */
+.movie-list-item:hover {
+    transform: scale(1.01); /* Zoom léger */
+    box-shadow: 0px 2px 6px rgba(255, 255, 255, 0.1); /* Ombre légère */
+    background-color: black; /* Changement de couleur au survol */
+    border-color: #ccc; /* Accentue légèrement la bordure */
+}
+
+.movie-link:hover {
+    color: #1e90ff; /* Couleur du texte au survol */
+}

@@ -1,0 +1,60 @@
+/* Styles pour le contenu de la page */
+.page-content {
+  min-height: 100vh; /* Définir une hauteur minimale pour le contenu de la page */
+  background-color: black; 
+  font-family: 'Oswald', sans-serif;
+  color: #fff; /* Texte */
+  padding: 20px; /* Ajouter un peu de padding autour du contenu */
+  padding-right: 10%;
+}
+
+/* Styles pour les éléments de texte dans le contenu de la page */
+.page-content h1, .page-content h2, .page-content p {
+  color: #fff; /* S'assurer que tous les titres et paragraphes sont en blanc */
+  margin-bottom: 20px; /* Ajouter de l'espace en bas de chaque élément */
+  line-height: 1.6; /* Ajouter de l'espace entre les lignes pour une meilleure lisibilité */
+  max-width: 600px; /* Limiter la largeur du texte pour une meilleure lisibilité */
+  margin-left: 0;
+  margin-right: auto;
+}
+
+/* Styles Cinema */
+.page-content ul {
+  list-style-type: none; /* Supprimer les puces de la liste */
+  padding: 0;
+  margin: 0;
+}
+
+.page-content ul li {
+  margin-bottom: 20px; /* Ajouter de l'espace entre chaque élément de la liste */
+  padding: 10px; /* Ajouter un peu de padding autour de chaque élément */
+}
+
+.page-content .movie-title {
+  font-size: 1.5em; /* Taille de la police pour le titre du film */
+  font-weight: bold; /* Gras pour le titre du film */
+  margin-bottom: 10px; /* Ajouter de l'espace en bas du titre */
+}
+
+.page-content .movie-director, 
+.page-content .movie-duration { 
+  margin: 5px 0; /* Ajouter de l'espace entre les attributs */
+}
+
+.page-content .movie-description { 
+  margin: 2px 0; /* Réduire l'espace autour de la description */ 
+  font-size: 0.9em; /* Réduire légèrement la taille de police */ 
+  max-width: 70%; /* Limiter la largeur de la description pour une meilleure lisibilité */
+  font-style: italic; /* Mettre la description en italique */
+}
+
+
+/* Ajouter des styles supplémentaires si nécessaire */
+.page-content a {
+  color: #00f; /* Lien en bleu pour contraste */
+  text-decoration: underline; /* Souligner les liens */
+}
+
+.page-content a:hover {
+  color: #40e0d0; /* Changer la couleur des liens au survol pour plus de visibilité */
+}

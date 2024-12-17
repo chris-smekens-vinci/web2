@@ -1,0 +1,75 @@
+.movie-card li { 
+  background-color: black; 
+  border: 1px solid #ccc; 
+  border-radius: 4px; 
+  width: 250px; /* Réduire la largeur */ 
+  margin: 16px 8px; /* Ajoute plus d'espace au-dessus et conserve l'espacement horizontal */ 
+  padding: 12px; /* Réduire le rembourrage */ 
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
+  transition: transform 0.2s, z-index 0.2s; 
+  flex: 0 0 auto; 
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Aligner les éléments de manière uniforme */
+  align-items: stretch; /* Force les enfants à occuper toute la largeur */
+  min-height: 350px; /* Définit une hauteur minimale uniforme */
+  box-sizing: border-box; /* Inclut le padding et la bordure dans la hauteur totale */
+}
+
+.movie-card li:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.movie-card img {
+  width: 100%;
+  height: 320px;
+  border-radius: 8px;
+  object-fit: cover; /* Maintient le comportement de l'image */
+}
+
+.movie-card strong {
+  font-size: 1.1em;
+  margin-top: 8px;
+  display: flex; /* Active Flexbox sur cet élément */
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  text-align: center; /* Centre le texte si besoin */
+}
+
+.movie-card p {
+  margin: 4px 0;
+  flex-grow: 1; /* Permet au texte de remplir l'espace disponible */
+  display: flex;
+  align-items: center; /* Centre le texte verticalement si possible */
+  justify-content: center; /* Centre le texte horizontalement */
+  text-align: center; /* Centre le texte dans le paragraphe */
+}
+
+.movie-card {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding: 10px;
+  margin-top: 20px; /* Ajoute de l'espace au-dessus de la section des cartes */
+}
+
+/* Customisation de la scrollbar */
+.movie-card::-webkit-scrollbar {
+  height: 4px;
+}
+
+.movie-card::-webkit-scrollbar-track {
+  background: black;
+  border-radius: 10px;
+}
+
+.movie-card::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.movie-card::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

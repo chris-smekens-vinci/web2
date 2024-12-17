@@ -1,0 +1,14 @@
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.movie-list ul {
+  display: flex;
+  list-style: none;
+  padding: 0;
+}
+  
+  
