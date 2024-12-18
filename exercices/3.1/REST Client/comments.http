@@ -1,0 +1,72 @@
+@baseUrl = http://localhost:3000
+
+### Create a new user (me = otf)
+# @name otf
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username": "otf",
+    "password": "hannahmontana"
+}
+
+### Login the new user
+# @name otf
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username": "otf",
+    "password": "hannahmontana"
+}
+
+### Try to login with wrong password
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username": "otf",
+    "password": "abelladanger"
+}
+
+### Try to login with wrong username
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username": "gucci",
+    "password": "abelladanger"
+}
+
+### Read all comments
+GET {{baseUrl}}/comments
+
+### Read all comments for a film
+GET {{baseUrl}}/comments/film/1
+
+### Read one comment by id
+GET {{baseUrl}}/comments/1
+
+### Create a new comment (requires JWT)
+POST {{baseUrl}}/comments
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "filmId": 1,
+    "content": "Django Unchained est un puissant récit de liberté et de justice, qui éveille des émotions profondes à travers une histoire de courage et d'amour."
+}
+
+### Create a new comment without JWT
+POST {{baseUrl}}/comments
+Content-Type: application/json
+
+{
+    "filmId": 1,
+    "content": "Django Unchained est un puissant récit de liberté et de justice, qui éveille des émotions profondes à travers une histoire de courage et d'amour."
+}
+
+### Delete a comment by id (requires JWT)
+DELETE {{baseUrl}}/comments/films/1
+Authorization: {{otf.response.body.token}}
+
