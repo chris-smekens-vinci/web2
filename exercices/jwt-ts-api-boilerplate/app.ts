@@ -5,6 +5,7 @@ import usersRouter from "./routes/users";
 import pizzaRouter from "./routes/pizzas";
 import drinkRouter from "./routes/drinks";
 import authsRouter from "./routes/auths";
+import filmsRouter from "./routes/films";
 
 
 const app = express();
@@ -30,11 +31,13 @@ app.use("/users", usersRouter);
 app.use("/pizzas", pizzaRouter);
 app.use("/drinks", drinkRouter);
 app.use("/auths", authsRouter);
+app.use("/films", filmsRouter);
 
 
 const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
   console.error(err.stack);
-  return res.status(500).send("Something broke!");
+  res.status(500).send("Something broke!");
+  return;
 };
 
 app.use(errorHandler);
