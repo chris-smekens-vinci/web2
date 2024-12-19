@@ -10,10 +10,24 @@ interface Movie {
 
 interface MovieContext {
     movies: Movie[];
-    setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
+    //setMovies: React.Dispatch<React.SetStateAction<Movie[]>>;
     movieAdded: (newMovie: NewMovie) => void;
+    registerUser: (newUser: User) => Promise<void>;
+    loginUser: (user: User) => Promise<void>;
 };
 
 type NewMovie = Omit<Movie, "id">;
 
-export type { Movie, MovieContext, NewMovie };
+type User = {
+    username: string;
+    password: string;
+};
+
+type AuthenticatedUser = {
+    username: string;
+    token: string;
+};
+
+type MaybeAuthenticatedUser = AuthenticatedUser | undefined;
+
+export type { Movie, MovieContext, NewMovie, User, AuthenticatedUser, MaybeAuthenticatedUser };

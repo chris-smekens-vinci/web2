@@ -5,3 +5,72 @@
   background-color: #f4f4f4;
 }
   */
+
+/* Styles globaux pour les formulaires */
+
+.login-register-form {
+  max-width: 800px; /* Augmenter la largeur du formulaire */
+  margin: 0;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: black;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+  /* Centrage vertical et horizontal avec plus d'espace en haut */
+  position: absolute;
+  top: 60%; /* Ajustement pour plus d'espace en haut */
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.login-register-form h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 1.5em;
+}
+
+.login-register-form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.login-register-form input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  background-color: black;
+  color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.login-register-form button {
+  width: 100%;
+  padding: 10px;
+  background-color: #40e0d0;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1em;
+  cursor: pointer;
+  transition: opacity 0.3s;
+  font-family: 'Oswald', sans-serif;
+
+}
+
+.login-register-form button:hover {
+  background-color: #40e0d0;
+  color: #fff;
+  opacity: 0.7;
+}
+
+/* Styles pour le message d'erreur */
+.login-register-form .error-message {
+  color: #FFA500;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}

@@ -10,6 +10,8 @@ import CinemaPage from './pages/CinemaPage.tsx';
 import MovieListPage from './pages/MovieListPage.tsx';
 import AddMoviePage from './pages/AddMoviePage.tsx';
 import MoviePage from './pages/MoviePage.tsx';
+import RegisterPage from './pages/RegisterPage.tsx';
+import LoginPage from './pages/LoginPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,14 @@ const router = createBrowserRouter([
       {
         path: "/add-movie",
         element: <AddMoviePage />,
+      },
+      {
+        path: "/login",
+        element: <LoginPage />,
+      },
+      {
+        path: "/register",
+        element: <RegisterPage />,
       },
       {
         path: "/movie/:id",

@@ -1,4 +1,4 @@
-import { Movie, NewMovie } from "../types";
+import { Movie, NewMovie, AuthenticatedUser } from "../types";
 
 const fetchMovies = async (): Promise<Movie[]> => {
   try {
@@ -17,12 +17,13 @@ const fetchMovies = async (): Promise<Movie[]> => {
   }
 };
 
-const addMovie = async (movie: NewMovie): Promise<Movie> => {
+const addMovie = async (movie: NewMovie, authenticatedUser: AuthenticatedUser): Promise<Movie> => {
   try {
     const response = await fetch("/api/films", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: authenticatedUser.token,
       },
       body: JSON.stringify(movie),
     });
