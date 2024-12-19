@@ -1,0 +1,230 @@
+@baseUrl = http://localhost:3000
+
+### Read all films
+GET {{baseUrl}}/films
+
+### Read all films with minimum-duration of 140min
+GET {{baseUrl}}/films/?minimum-duration=130
+
+### Try to read films with wrong minimum-duration
+GET {{baseUrl}}/films/?minimum-duration=0
+
+### Read film with ID == 1
+GET {{baseUrl}}/films/1
+
+### Read film which does not exist
+GET {{baseUrl}}/films/500
+
+### Create a new user (me = otf)
+# @name otf
+POST {{baseUrl}}/auths/register
+Content-Type: application/json
+
+{
+    "username": "otf",
+    "password": "hannahmontana"
+}
+
+### Login the new user
+# @name otf
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username": "otf",
+    "password": "hannahmontana"
+}
+
+### Try to login with wrong password
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username": "otf",
+    "password": "abelladanger"
+}
+
+### Try to login with wrong username
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+    "username": "gucci",
+    "password": "abelladanger"
+}
+
+### Try Create a film without a token
+POST {{baseUrl}}/films
+Content-Type: application/json
+
+{
+    "title": "Avengers: Infinity War",
+    "duration": 149,
+    "director": "Anthony and Joe Russo",
+    "budget": 316,
+    "urlImage": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg"
+}
+
+### Create a film with a token
+POST {{baseUrl}}/films
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title": "Avengers: Infinity War",
+    "duration": 149,
+    "director": "Anthony and Joe Russo",
+    "budget": 316,
+    "urlImage": "https://m.media-amazon.com/images/M/MV5BMjMxNjY2MDU1OV5BMl5BanBnXkFtZTgwNzY1MTUwNTM@._V1_.jpg"
+}
+
+### Try to create a film with a parameter missing
+POST {{baseUrl}}/films/
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title":" ",
+    "duration": 136,
+    "budget": 115,
+    "urlImage":"https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg"
+}
+
+### Try to create a film with an empty string or string with whitespaces only
+POST {{baseUrl}}/films/
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title":" ",
+    "duration": 136,
+    "director": "George Lucas",
+    "budget": 115,
+    "urlImage":"https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg"
+}
+
+### Try to create a film with a wrong budget (string instead of number)
+POST {{baseUrl}}/films/
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title":"Star Wars: The Phantom Menace (Episode I)",
+    "duration": 136,
+    "director": "George Lucas",
+    "budget": "115",
+    "urlImage":"https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg"
+}
+
+### Challenge of ex1.4 : Try to create a film with an unexpected parameter
+POST {{baseUrl}}/films/
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title":"Star Wars: The Phantom Menace (Episode I)",
+    "duration": 136,
+    "director": "George Lucas",
+    "budget": 115,
+    "urlImage":"https://upload.wikimedia.org/wikipedia/en/4/40/Star_Wars_Phantom_Menace_poster.jpg",
+    "unexpected": "unexpected"
+}
+
+### Try to create a film which already exists (same title and director)
+POST {{baseUrl}}/films/
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title": "Spider-Man",
+    "duration": 121,
+    "director": "Sam Raimi",
+    "budget": 139,
+    "urlImage": "https://m.media-amazon.com/images/M/MV5BZWM0OWVmNTEtNWVkOS00MzgyLTkyMzgtMmE2ZTZiNjY4MmFiXkEyXkFqcGc@._V1_.jpg"
+}
+
+### Delete the film with ID == 2
+DELETE {{baseUrl}}/films/2
+Authorization: {{otf.response.body.token}}
+
+### Delete the film with ID == 2 without token
+DELETE {{baseUrl}}/films/2
+
+### Update film based on id
+PATCH {{baseUrl}}/films/3
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title":"Star Wars: Episode II – Attack of the Clones",
+    "budget": 115
+}
+
+### Try to update film based on id with empty param
+PATCH {{baseUrl}}/films/3
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title":""
+}
+
+### Challenge ex1.6 : Try to update film based on id with unexpected param (id)
+
+PATCH {{baseUrl}}/films/3
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "id": 33
+}
+
+### Update the whole film based on id
+PUT {{baseUrl}}/films/3
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title": "Heat",
+    "duration": 170,
+    "director": "Michael Mann",
+    "budget": 60,
+    "urlImage": "https://m.media-amazon.com/images/M/MV5BYzI2N2QxNDItN2JmMS00YjYxLWI0Y2QtMGQ4YThiOWE0YWFjXkEyXkFqcGc@._V1_.jpg"
+}
+
+### Update the whole film based on id without token
+PUT {{baseUrl}}/films/3
+Content-Type: application/json
+
+{
+    "title": "Heat",
+    "duration": 170,
+    "director": "Michael Mann",
+    "budget": 60,
+    "urlImage": "https://m.media-amazon.com/images/M/MV5BYzI2N2QxNDItN2JmMS00YjYxLWI0Y2QtMGQ4YThiOWE0YWFjXkEyXkFqcGc@._V1_.jpg"
+}
+
+### Try to update film based on id when missing one expected parameter (director)
+PUT {{baseUrl}}/films/3
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title": "Heat",
+    "duration": 170,
+    "budget": 60,
+    "urlImage": "https://m.media-amazon.com/images/M/MV5BYzI2N2QxNDItN2JmMS00YjYxLWI0Y2QtMGQ4YThiOWE0YWFjXkEyXkFqcGc@._V1_.jpg"
+}
+
+### Create new film with ID == 666
+PUT {{baseUrl}}/films/666
+Content-Type: application/json
+Authorization: {{otf.response.body.token}}
+
+{
+    "title": "Django Unchained",
+    "duration": 165,
+    "director": "Quentin Tarantino",
+    "budget": 100,
+    "urlImage": "https://m.media-amazon.com/images/M/MV5BMjIyNTQ5NjQ1OV5BMl5BanBnXkFtZTcwODg1MDU4OA@@._V1_.jpg"
+}
