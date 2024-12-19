@@ -1,0 +1,29 @@
+/* Styles pour le footer */ 
+.footer {
+    text-align: right;
+    padding: 20px;
+    padding-right: 40px;
+    border-top: 1px solid #fff;
+}
+
+.footer p { 
+    margin: 0; 
+    font-size: 1em;
+    color: #fff;
+}
+
+.footer.light {
+    background-color: white;
+    color: black;
+}
+
+.footer.dark {
+    background-color: black;
+    color: white;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1em;
+    color: inherit;
+}

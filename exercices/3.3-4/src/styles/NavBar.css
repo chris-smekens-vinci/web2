@@ -1,0 +1,40 @@
+/* Styles pour la barre de navigation */
+.navbar {
+    display: flex;
+    gap: 3px;
+}
+
+.navbar.light {
+    background-color: white;
+    color: black;
+}
+
+.navbar.dark {
+    background-color: black;
+    color: white;
+}
+
+.navbar a {
+    color: inherit;
+    background-color: inherit;
+    border-radius: 2px;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+    transition: opacity 0.3s; /* Ajouter une transition pour la transparence */
+    border: 2px solid; /* Ajouter une légère ligne */
+}
+
+.navbar.light a {
+    border-color: black;
+}
+
+.navbar.dark a {
+    border-color: white;
+}
+
+.navbar a:hover {
+    background-color: #ff6347;
+    color: #fff;
+    opacity: 0.7; /* Rendre le lien légèrement transparent */
+}
